@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
     username:{type: String, required: true, unique: true},
     password: {type: String, required: true},
     role: {type: String, enum: ['user', 'admin', 'creator'], required: true, default: 'user'},
-    courses: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}]
+    coursesCreated: [{type: mongoose.Schema.Types.ObjectId, ref: 'Courses'}],
+    coursesSubscribed: [{type: mongoose.Schema.Types.ObjectId, ref: 'Courses'}]
     // profilePicture: {type: String, default: 'default.jpg'},
     }, 
     {timestamps: true}

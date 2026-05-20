@@ -1,4 +1,5 @@
 const User = require('../Models/userModel')
+const Courses = require('../Models/coursesModel.js')
 const { hashPassword, verifyPassword } = require('../Services/paswordServices.js')
 const jwt = require('jsonwebtoken')
 
@@ -90,4 +91,34 @@ exports.logout = async (req, res) => {
     res.clearCookie('token');
 
     res.status(200).json({message: 'User Logged out'})
+}
+
+// exports.createdCourses = async (req, res) => {
+//     try{
+//         //view courses
+//         const userCreatedCourses = await User.findById(req.user.id,).populate('coursesCreated')
+//         return res.status(200).json({message: userCreatedCourses})
+//     }catch (error){
+//         res.status(500).json({error: error.message})
+//     }
+// }
+
+exports.subscribeToCourse =
+
+exports.subscribedCourses = async (req, res) => {
+    try{
+        //view courses
+        const userSubscribedCourses = await User.findById(req.user.id,).populate('coursesSubscribed')
+        return res.status(200).json({message: userSubscribedCourses})
+    }catch (error){
+        res.status(500).json({error: error.message})
+    }
+}
+
+exports.subscribeToCourse = async (req, res) => {
+    // const { } 
+
+    const availableCourses = await Coueses.find({published: true}).search(['title', 'description']).sort()
+
+    const pagination = availableCourses.fi
 }
